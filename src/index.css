@@ -1,0 +1,25 @@
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+ 
+}
+
+.todo{
+  margin: auto; 
+  width:800px;
+  margin-top:100px; 
+  background: #E4E4E4; 
+  text-align: center; 
+
+}
+
+form>input{
+  width:300px;
+}
+
+ul{
+  list-style: none; 
+}
