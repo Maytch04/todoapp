@@ -9,12 +9,10 @@ var ToDo =  React.createClass({
    return{
     myArray: [], 
     text: '',
-    complete: false
+     complete: (!!this.complete) || false
 
   }
 },
-
-
 
   handleChange: function(e){
     this.setState({
@@ -32,10 +30,12 @@ var ToDo =  React.createClass({
 
 
     checkChange: function(e){
-  this.setState({
-      complete: e.target.checked
-    }); 
+       
+      this.setState({
+      complete:e.target.checked
+    })
 },
+  
          
       
 
@@ -59,21 +59,21 @@ var ToDo =  React.createClass({
         
       <div className="todo">
 
-          <h1>todos</h1>
+          <p>todos</p>
           <form onSubmit={this.handleSubmit}> 
 
-          <input type="text" onChange={this.handleChange} placeholder="What needs to be done?" value={this.state.text}/>
+          <input className="todoInput" type="text" onChange={this.handleChange} placeholder="What needs to be done?" value={this.state.text}/>
           </form>
-          <ul>
+          <ul className="todoOutput"style={lineStyle}>
             {this.state.myArray.map(function(val, i){
-              return <li key={i}> 
-              <label style={lineStyle}>
-                <input type="checkbox"
+              return <li className="outBox" key={i}> 
+           
+                <input className="checkBox" type="checkbox"
                 checked={this.state.complete}
                   ref="complete"
                   onChange={this.checkChange}
-                  /> </label> {val} 
-                  {<button onClick={this.handleDelete.bind(this,i)}>x</button>}</li>
+                  /> {val} 
+                  {<button className="xed" onClick={this.handleDelete.bind(this,i)}>X</button>}</li>
 
             }.bind(this))}
           </ul>
