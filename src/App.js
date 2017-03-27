@@ -31,13 +31,11 @@ var ToDo =  React.createClass({
   },
 
 
-    checkChange: function(e,c){
-      this.setState({
-        complete:true
-        
-     })
-      console.log(e.target.checked)
-    },
+    checkChange: function(e){
+  this.setState({
+      complete: e.target.checked
+    }); 
+},
          
       
 
@@ -53,7 +51,7 @@ var ToDo =  React.createClass({
     
 
   render: function(){
-      let labelStyle={
+      var lineStyle={
       'textDecoration': this.state.complete ? 'line-through' : ''
     };
     
@@ -69,9 +67,10 @@ var ToDo =  React.createClass({
           <ul>
             {this.state.myArray.map(function(val, i){
               return <li key={i}> 
-              <label style={labelStyle}>
+              <label style={lineStyle}>
                 <input type="checkbox"
-                  // checked={this.state.complete}
+                checked={this.state.complete}
+                  ref="complete"
                   onChange={this.checkChange}
                   /> </label> {val} 
                   {<button onClick={this.handleDelete.bind(this,i)}>x</button>}</li>
